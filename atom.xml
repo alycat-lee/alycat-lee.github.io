@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Alycat Blog</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2023-08-31T02:38:22.746Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>Alycat</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Redis安装</title>
+    <link href="http://example.com/2019/07/28/2019-07-28-Redis-%E5%AE%89%E8%A3%85/"/>
+    <id>http://example.com/2019/07/28/2019-07-28-Redis-%E5%AE%89%E8%A3%85/</id>
+    <published>2019-07-28T07:34:29.000Z</published>
+    <updated>2023-08-31T02:38:22.746Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="下载Redis"><a href="#下载Redis" class="headerlink" title="下载Redis"></a>下载Redis</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://download.redis.io/releases/redis-5.0.5.tar.gz</span><br></pre></td></tr></table></figure><h2 id="解压"><a href="#解压" class="headerlink" title="解压"></a>解压</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf redis-5.0.5.tar.gz</span><br><span class="line">cd redis-5.0.5# 切换目录</span><br></pre></td></tr></table></figure><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo make PREFIX=/usr/local/redis install</span><br></pre></td></tr></table></figure><h2 id="复制配置文件"><a href="#复制配置文件" class="headerlink" title="复制配置文件"></a>复制配置文件</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp ~/redis-5.0.5/redis.conf /usr/local/redis/6379.conf</span><br><span class="line">sudo cp ~/redis-5.0.5/utils/redis_init_script /etc/init.d/redis #拷贝系统启动文件</span><br></pre></td></tr></table></figure><h2 id="配置文件修改"><a href="#配置文件修改" class="headerlink" title="配置文件修改"></a>配置文件修改</h2><p>6379.conf:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">dir /usr/local/redis/ #dump文件目录</span><br><span class="line">logfile &quot;/url/local/redis/redis.log&quot; #日志文件目录</span><br></pre></td></tr></table></figure><p>redis脚本修改(Redis是以启动端口为标准寻找配置文件和创建进程PID文件):</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">EXEC=/usr/local/redis/bin/redis-server #服务端执行路径</span><br><span class="line">CLIEXEC=/usr/local/redis/bin/redis-cli #客户端执行路径</span><br><span class="line">CONF=&quot;/usr/local/redis/$&#123;REDISPORT&#125;.conf&quot; #配置文件路径</span><br><span class="line"><span class="meta prompt_">$</span><span class="language-bash">EXEC <span class="variable">$CONF</span> &amp; <span class="comment">#后台执行</span></span></span><br></pre></td></tr></table></figure><h2 id="注册服务"><a href="#注册服务" class="headerlink" title="注册服务"></a>注册服务</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo update-rc.d redis defaults</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h2 id=&quot;下载Redis&quot;&gt;&lt;a href=&quot;#下载Redis&quot; class=&quot;headerlink&quot; title=&quot;下载Redis&quot;&gt;&lt;/a&gt;下载Redis&lt;/h2&gt;&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=</summary>
+      
+    
+    
+    
+    
+    <category term="Redis" scheme="http://example.com/tags/Redis/"/>
+    
+  </entry>
+  
+</feed>
